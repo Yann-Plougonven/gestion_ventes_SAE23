@@ -1,0 +1,154 @@
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:02:03 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:02:06 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:02:14 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:02:20 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:02:23 AM
+ACCES REFUSÉ À superuserrrr@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:02:33 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:03:10 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:06:40 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:07:19 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:01 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:03 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:10 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:13 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:17 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:19 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:32 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:34 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:36 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:44 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:09:49 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:10:37 AM
+ACCES REFUSÉ À superuser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:10:42 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:10:44 AM
+ACCES REFUSÉ À supeaefruser@test.fr, depuis 127.0.0.1, à Tuesday 28th of May 2024 01:10:53 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 10:28:30 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 10:34:35 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 11:23:28 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Friday 31st of May 2024 10:46:55 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 10:52:46 PM
+CONNEXION de client@test.fr, statut : client, depuis ::1, à Friday 31st of May 2024 10:59:06 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 10:59:18 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 10:59:21 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:08:36 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 11:09:41 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 11:10:43 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 11:10:47 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 11:11:01 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:11:04 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:12:15 PM
+ACCES REFUSÉ À vendeur@test.fr, depuis 127.0.0.1, à Friday 31st of May 2024 11:14:48 PM
+ACCES REFUSÉ À client@test.fr, depuis 127.0.0.1, à Friday 31st of May 2024 11:14:52 PM
+CONNEXION de client1@test.fr, statut : client, depuis 127.0.0.1, à Friday 31st of May 2024 11:14:57 PM
+CONNEXION de client1@test.fr, statut : client, depuis 127.0.0.1, à Friday 31st of May 2024 11:17:40 PM
+CONNEXION de client1@test.fr, statut : client, depuis 127.0.0.1, à Friday 31st of May 2024 11:17:50 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:29:31 PM
+CONNEXION de client1@test.fr, statut : client, depuis ::1, à Friday 31st of May 2024 11:29:44 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 31st of May 2024 11:29:49 PM
+CONNEXION de client1@test.fr, statut : client, depuis ::1, à Friday 31st of May 2024 11:30:58 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:31:03 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:31:14 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:44:58 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:48:18 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:48:27 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:49:07 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Friday 31st of May 2024 11:50:29 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:02:32 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:06:11 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:08:01 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:08:58 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:09:41 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:12:12 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:13:08 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:16:10 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:21:23 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:23:23 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:27:59 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 01:31:54 AM
+ACCES REFUSÉ À , depuis 127.0.0.1, à Saturday 1st of June 2024 01:32:22 AM
+CONNEXION de client1@test.fr, statut : client, depuis 127.0.0.1, à Saturday 1st of June 2024 01:32:25 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 01:32:32 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 01:33:25 AM
+ACCES REFUSÉ À thomas@test.fr, depuis 127.0.0.1, à Saturday 1st of June 2024 01:55:55 AM
+ACCES REFUSÉ À thomas@test.fr, depuis 127.0.0.1, à Saturday 1st of June 2024 01:56:00 AM
+ACCES REFUSÉ À thomas@test.fr, depuis 127.0.0.1, à Saturday 1st of June 2024 01:56:02 AM
+CONNEXION de thomas@test.fr, statut : client, depuis 127.0.0.1, à Saturday 1st of June 2024 01:56:15 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Saturday 1st of June 2024 01:56:18 AM
+CONNEXION de thomas@test.fr, statut : client, depuis 127.0.0.1, à Saturday 1st of June 2024 01:56:21 AM
+CONNEXION de thomas@test.fr, statut : client, depuis ::1, à Saturday 1st of June 2024 01:57:13 AM
+CONNEXION de thomas@test.fr, statut : client, depuis ::1, à Saturday 1st of June 2024 02:37:51 AM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis ::1, à Saturday 1st of June 2024 02:37:55 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 02:52:39 AM
+CONNEXION de thomas@test.fr, statut : client, depuis ::1, à Saturday 1st of June 2024 04:08:46 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Saturday 1st of June 2024 04:13:40 AM
+CONNEXION de thomas@test.fr, statut : client, depuis 127.0.0.1, à Saturday 1st of June 2024 04:37:47 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 04:40:12 PM
+CONNEXION de thomas@test.fr, statut : client, depuis 127.0.0.1, à Saturday 1st of June 2024 04:41:12 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 04:42:41 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Saturday 1st of June 2024 06:24:18 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Saturday 1st of June 2024 07:46:37 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 07:46:56 PM
+ACCES REFUSÉ À simpleuser@test.f, depuis 127.0.0.1, à Saturday 1st of June 2024 10:04:01 PM
+ACCES REFUSÉ À simpleuser@test.f, depuis 127.0.0.1, à Saturday 1st of June 2024 10:04:04 PM
+CONNEXION de thomas@test.fr, statut : client, depuis 127.0.0.1, à Saturday 1st of June 2024 10:04:09 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Saturday 1st of June 2024 10:04:13 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 10:04:16 PM
+ACCES REFUSÉ À simpleuser@test.f, depuis 127.0.0.1, à Saturday 1st of June 2024 10:08:28 PM
+ACCES REFUSÉ À simpleuser@test.f, depuis 127.0.0.1, à Saturday 1st of June 2024 10:09:30 PM
+ACCES REFUSÉ À thomas@test.f, depuis 127.0.0.1, à Saturday 1st of June 2024 10:09:35 PM
+ACCES REFUSÉ À thomas@test.f, depuis 127.0.0.1, à Saturday 1st of June 2024 10:10:18 PM
+ACCES REFUSÉ À superuser@test.f, depuis 127.0.0.1, à Saturday 1st of June 2024 10:10:22 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Saturday 1st of June 2024 10:10:24 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Sunday 2nd of June 2024 01:28:24 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:09:42 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:25:27 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:38:12 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 01:04:07 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Sunday 2nd of June 2024 01:25:42 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Sunday 2nd of June 2024 01:25:54 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 01:35:12 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:14:53 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:15:50 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:17:32 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:20:28 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:21:06 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:24:42 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 02:32:46 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 03:04:12 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 06:35:38 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 07:57:50 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:00:48 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:00:54 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:01:36 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:02:06 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:02:10 PM
+ACCES REFUSÉ À simpleuser@test.fr, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:04:02 PM
+ACCES REFUSÉ À simpleuser@test.fr, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:04:11 PM
+ACCES REFUSÉ À simpleuser@test.fr, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:04:30 PM
+ACCES REFUSÉ À simpleuser@test.fr, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:04:32 PM
+ACCES REFUSÉ À simpleuser@test.fr, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:05:25 PM
+ACCES REFUSÉ À aa@aa.aa, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:05:34 PM
+ACCES REFUSÉ À aa@aa.aa, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:06:12 PM
+ACCES REFUSÉ À aa@aa.aa, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:06:18 PM
+ACCES REFUSÉ À aa@aa.aa, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:07:08 PM
+ACCES REFUSÉ À , depuis 127.0.0.1, à Sunday 2nd of June 2024 08:07:15 PM
+ACCES REFUSÉ À , depuis 127.0.0.1, à Sunday 2nd of June 2024 08:07:49 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:07:51 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:08:08 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:08:47 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:12:50 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:12:53 PM
+ACCES REFUSÉ À , depuis 127.0.0.1, à Sunday 2nd of June 2024 08:12:56 PM
+CONNEXION de thomas@test.fr, statut : client, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:12:58 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:13:55 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:14:54 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:36:28 PM
+CONNEXION de simpleuser@test.fr, statut : vendeur, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:36:56 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Sunday 2nd of June 2024 08:37:02 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Monday 3rd of June 2024 06:46:25 PM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 7th of June 2024 08:33:50 AM
+CONNEXION de thomas@test.fr, statut : client, depuis ::1, à Friday 7th of June 2024 08:53:28 AM
+CONNEXION de thomas@test.fr, statut : client, depuis ::1, à Friday 7th of June 2024 09:04:28 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis ::1, à Friday 7th of June 2024 09:05:12 AM
+CONNEXION de thomas@test.fr, statut : client, depuis 127.0.0.1, à Friday 7th of June 2024 09:45:22 AM
+CONNEXION de superuser@test.fr, statut : admin, depuis 127.0.0.1, à Friday 7th of June 2024 09:45:31 AM

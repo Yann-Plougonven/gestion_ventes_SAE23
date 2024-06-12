@@ -1,0 +1,18 @@
+/* style.css */
+/* Auteurs : Nathan Aubinais et Yann Plougonven-Lastennet */
+
+/* Marge supérieure des titres h1 et les centrer */
+h1{
+    margin-top: 3%;
+    text-align: center;
+}
+
+/* Marge supérieure des titres h2 */
+h2{
+    margin-top: 10%;
+}
+
+/* Messsage d'erreur de mdp trop peu sécurisé dans le formulaire de connexion */
+.msg_erreur{
+    color:red;
+}
