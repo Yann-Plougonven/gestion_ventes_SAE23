@@ -6,6 +6,7 @@
 session_start();
 include_once("fonctions.php");
 include_once("formulaires.php");
+verif_autorisation_d_acces(array("admin", "vendeur")); // autoriser ou refuser l'accès à la page
 ?>
 
 <!DOCTYPE html>
@@ -24,19 +25,13 @@ include_once("formulaires.php");
 </head>
 
 <body>
-    
-    <!-- Autoriser ou non l'accès à la page -->
-    <?php
-        verif_autorisation_d_acces(array("admin", "vendeur"))
-	?>
 
     <!-- en-tête de la page -->
     <?php
         afficher_header()
     ?>
-
     
-    <div class="container-fluid">
+    <div class="container-fluid bg-color">
         <div class="row">
 
             <!-- menu de navigation -->
@@ -50,23 +45,33 @@ include_once("formulaires.php");
 
             <!-- partie principale de la page -->
             <main class="col-12 col-xl-9">
-
                 <h1>Supprimer des données</h1>
-                <?php
-                    FormulaireChoixProduit2('supprimer');
-                    if (!empty($_POST) && isset($_POST["NomP"])) {
-                        $res = supprimerProduit($_POST["NomP"]);
-                
-                        if ($res == 1) {
-                            echo "Le produit a bien été supprimé";
-                            } 
-                        else{
-                            echo "Erreur, le produit n'a pas été supprimé";
+                <!-- Partie qui permet la suppression d'un produit-->
+                <div class="col-12 col-xl-6">
+                    <h2> Supprimer un produit </h2>
+                    <!-- fais appel au formulaire de suppression d'un produit -->
+                    <?php
+                        FormulaireChoixProduit2('supprimer');
+                        // Teste si l'a selection du nom d'un produit à bien été faite à l'aide du menu déroulant
+                        if (!empty($_POST) && isset($_POST["NomP"])){
+                            // Si la condition a été respecté appel la fonction de suppression d'un produit
+                            $res = supprimerProduit($_POST["NomP"]);
                         }
-                        listerProduits();
-                    }
-                ?>
-
+                    ?>
+                </div>
+                <!-- Partie qui permet la suppression d'un client-->
+                <div class="col-12 col-xl-6">   
+                    <h2> Supprimer un client </h2>
+                    <!-- fais appel au formulaire de suppression d'un produit -->
+                    <?php
+                        FormulaireChoixAcheteur('supprimer');
+                        // Teste si l'a selection du nom d'un acheteur à bien été faite à l'aide du menu déroulant
+                        if (!empty($_POST) && isset($_POST["NomA"])) {
+                            // Si la condition a été respecté appel la fonction de suppression d'un Acheteur
+                            $res = supprimerAcheteurs($_POST["NomA"]);
+                        }
+                    ?>
+                </div>
             </main>
 
         </div>

@@ -5,6 +5,19 @@
 
 session_start();
 include_once("fonctions.php");
+
+// Destruction de la session si l'utilisateur vient de cliquer sur le bouton de déconnexion
+if (!empty($_GET) && isset($_GET['action']) && $_GET['action'] == 'logout') {
+    $_SESSION = array();
+    session_destroy();
+}
+
+// Redirection index.php si l'utilisateur est déjà connecté et n'a pas cliqué sur le bouton de déconnexion
+// Sur certains serveurs (XAAMP n'est pas concerné), il est obligatoire de placer la redirection avant tout envoi de code au client.
+elseif (!empty($_SESSION) && isset($_SESSION['login'])) {
+    header("Location: index.php");
+    die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,22 +39,7 @@ include_once("fonctions.php");
 
 <body>
 
-
-    <?php
-        // Destruction de la session si l'utilisateur vient de cliquer sur le bouton de déconnexion
-        if (!empty($_GET) && isset($_GET['action']) && $_GET['action'] == 'logout') {
-            $_SESSION = array();
-            session_destroy();
-        }
-
-        // Redirection index.php si l'utilisateur est déjà connecté et n'a pas cliqué sur le bouton de déconnexion
-        elseif (!empty($_SESSION) && isset($_SESSION['login'])) {
-            header("Location: index.php");
-            die();
-        }
-    ?>
-
-    <main class="container-fluid min-vh-100"> <!-- .container-fluid : retire barre de défilement en bas de page -->
+    <main class="container-fluid min-vh-100 bg-color"> <!-- .container-fluid : retire barre de défilement en bas de page -->
         <div class="row">
 
             <!-- Colonne gauche vide pour centrer le formulaire sur les grands écrans -->
@@ -102,8 +100,12 @@ include_once("fonctions.php");
                                 fputs($monfichier, "CONNEXION de ".$_POST['login'].", statut : ".$_SESSION["statut"].", depuis ".$_SERVER['REMOTE_ADDR'].", à ".date('l jS \of F Y h:i:s A')."\n");
                                 fclose($monfichier);
 
-                                // redirection vers la page d'accueil
-                                header("Location: index.php");
+                                // redirection vers la page d'accueil (header("Location: index.php"); ne fonctionne ici pas sur certains serveurs)
+                                ?>
+                                <script type="text/javascript">
+                                    window.location.href = 'index.php';
+                                </script>
+                                <?php
                                 die();
 
                             } else {

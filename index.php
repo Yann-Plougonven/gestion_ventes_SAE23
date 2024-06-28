@@ -6,6 +6,8 @@
 session_start();
 include_once("fonctions.php");
 include_once("formulaires.php");
+// Sur certains serveurs (XAAMP n'est pas concerné), il est obligatoire de placer la redirection avant tout envoi de code au client :
+verif_autorisation_d_acces(array("admin", "vendeur", "client")); // autoriser ou refuser l'accès à la page
 ?>
 
 <!DOCTYPE html>
@@ -24,19 +26,13 @@ include_once("formulaires.php");
 </head>
 
 <body>
-    
-    <!-- Autoriser ou non l'accès à la page -->
-    <?php
-        verif_autorisation_d_acces(array("admin", "vendeur", "client"))
-	?>
 
     <!-- en-tête de la page -->
     <?php
         afficher_header()
     ?>
-
     
-    <div class="container-fluid">
+    <div class="container-fluid bg-color">
         <div class="row">
 
             <!-- menu de navigation -->
@@ -90,12 +86,20 @@ include_once("formulaires.php");
 
                     </div>
 
-                    <div class="row">
 
-                        <!-- Filtre sur plusieurs tableaux :TODO Nathan -->
-
-
-                    </div>
+                <!-- partie selction d'un produit pour voir ses ventes -->
+                <div class="col-12 col-xl-6">
+                    <h2> Chercher les ventes d'un produit </h2>
+                    <?php
+                        // appel le formulaire d'ajout d'un acheteur
+                        FormulaireSelection();
+                        // Vérifie que le nom et la ville de l'acheteur ont bien été renseigné dans le formulaire
+                        if (!empty($_POST) && isset($_POST["NomPr"])) {
+                            // Si la condition est vrai appel la fonction d'insertion d'acheteur
+                            $res = selectionnerProduits($_POST["NomPr"]);
+                        }
+                    ?>
+                </div>
 
 
                 <?php } ?>

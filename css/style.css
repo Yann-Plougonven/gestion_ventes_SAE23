@@ -16,3 +16,8 @@ h2{
 .msg_erreur{
     color:red;
 }
+
+/* Arrière-plan des pages */
+.bg-color{
+    background-color: #f0f9f8;
+}

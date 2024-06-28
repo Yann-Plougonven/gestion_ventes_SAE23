@@ -4,80 +4,256 @@
 // Auteurs : Nathan Aubinais et Yann Plougonven-Lastennet
 
 
-// Quand ce fichier (et non une fonction de ce fichier) est appellé, 
-// vérifier s'il est appellé pour une fonction spécifique.
-// Si c'est le cas, appeller la fonction correspondante.
-if (isset($_GET['action']) && !empty($_GET['action'])) {
-
-	// Si le formulaire de modification d'un client est appellé :
-	if ($_GET['action'] == 'get_modif_client') {
-		echo formulaireModificationClient();
-	}
-}
-
-
 // FORMULAIRE POUR AJOUTER UN PRODUIT QUI PROPOSE DONC DE RENSEIGNER LE NOM DU PRODUIT ET SON PRIX
 function FormulaireAjoutProduit(){
-    // connexion BDD et récupération des villes
+	// Auteur : Nathan Aubinais
+    // connexion BDD à la BDD
     $madb = new PDO('sqlite:bdd/ventesClient.sqlite');
-    $requete = "SELECT idP, NomP, Prix FROM Produits";
-    $resultat = $madb->query($requete); //var_dump($resultat);echo "<br/>"; 
+	// requete qui récupère toutes les info de la table Produits
+    $requete = "SELECT idP, NomP, Prix, Illustration FROM Produits";
+    $resultat = $madb->query($requete); //var_dump($resultat);echo "<br/>";
+
     if ($resultat) {
-    $villes = $resultat->fetchAll(PDO::FETCH_ASSOC);
+    	$res = $resultat->fetchAll(PDO::FETCH_ASSOC);
     }
+	
     ?>
+	<!-- Formulaire Pour ajouter un produit-->
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <fieldset> 
-    <label for="id_NomP">Nom du produit : </label><input type="text" name="NomP" id="id_NomP" required size="20" /><br />
-    <label for="id_Prix">Prix : </label><input type="float" name="Prix" id="id_Prix" required size="20" /><br />
-    <?php
-    ?>
-    </select>
-    <input type="submit" value="Insérer"/>
+		<!-- Permet de demander de renseigner le Nom du produit -->
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default-produit">Nom Produit</span>
+			<input type="text" name="NomP" id="id_NomP" required size="20" class="form-control" aria-label="Sizing example input">
+		</div>
+		<!-- Permet de demander de renseigner le Prix du produit -->
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-default-prix">Prix</span>
+			<input type="text" name="Prix" id="id_Prix" required size="20" class="form-control" aria-label="Sizing example input" >	
+		</div>
+		<!-- Bouton submit pour envoyer les données -->
+		<div class="input-group mb-3">
+			<button type="submit" class="btn btn-outline-primary">Ajouter le produit</button>
+		</div>	
     </fieldset>
     </form>
     <?php
-    // générer la liste des options à partir de $villes
     echo "<br/>";
     }// fin FormulaireAjoutProduit
 
+	function FormulaireAjoutAcheteur(){
+		// Auteur : Nathan Aubinais
+		// connexion BDD 
+		$madb = new PDO('sqlite:bdd/ventesClient.sqlite');
+		// Récupération de toutes les infos sur les acheteurs
+		$requete = "SELECT idC, NomP, Ville FROM Acheteurs";
+		$resultat = $madb->query($requete); //var_dump($resultat);echo "<br/>";
+
+		if ($resultat) {
+			$res = $resultat->fetchAll(PDO::FETCH_ASSOC);
+		}
+		
+		?>
+		<!-- Formulaire d'ajout d'un acheteur -->
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+		<fieldset> 
+			<!-- Permet de demander de renseigner le Nom d'un Acheteur -->
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroup-sizing-default-acheteur">Nom Acheteur </span>
+				<input type="text" name="NomA" id="id_NomA" required size="20" class="form-control" aria-label="Sizing example input" >
+			</div>
+			<!-- Permet de demander de renseigner le Nom de la ville -->
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroup-sizing-default-city">Ville </span>
+				<input type="text" name="Ville" id="id_Ville" required size="20" class="form-control" aria-label="Sizing example input">
+			</div>
+			<!-- Bouton avec submit pour Ajouter l'acheteur dans la base -->
+			<div class="input-group mb-3">
+				<button type="submit" class="btn btn-outline-primary">Ajouter le client</button>
+			</div>
+		</fieldset>
+		</form>
+		<?php
+		echo "<br/>";
+		}// fin FormulaireAjoutAcheteur
+
+		function FormulaireAjoutVente(){
+			// Auteur : Nathan Aubinais
+			// connexion BDD 
+			$madb = new PDO('sqlite:bdd/ventesClient.sqlite');
+			// Récupération de l'identifiant de l'acheteur et du produit renseigné grace aux noms avec également la quantité d'achat 
+			$requete = "SELECT Acheteurs.idC, Produits.idP, Achat.Qte FROM Achat INNER JOIN Acheteurs ON Achat.idC = Acheteurs.idC INNER JOIN Produits ON Achat.idP = Produits.idP ;";
+			$resultat = $madb->query($requete); //var_dump($resultat);echo "<br/>";
+			
+			if ($resultat) {
+				$res = $resultat->fetchAll(PDO::FETCH_ASSOC);
+			}
+			
+			?>
+			<!-- Formulaire d'ajout d'une vente à partir des noms du produit et de l'acheteur -->
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<fieldset>
+				<!-- Permet de demander de renseigner le Nom e l'acheteur -->
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-default-acheteur-name">Nom Acheteur </span>
+					<input type="text" name="NameA" id="id_NameA" required size="20" class="form-control" aria-label="Sizing example input" >
+				</div>
+				<!-- Permet de demander de renseigner le Nom du produit -->
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-default-produit-name">Nom Produit </span>
+					<input type="text" name="NameP" id="id_NameP" required size="20" class="form-control" aria-label="Sizing example input">
+				</div>
+				<!-- Permet de demander la quantité, le nombre d'achat -->
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-default-quantite">Quantité </span>
+					<input name="Qte" id="id_Qte" required size="20" class="form-control" aria-label="Sizing example input">
+				</div>
+				<!-- Bouton submit pour ajouter la vente  -->
+				<div class="input-group mb-3">
+					<button type="submit" class="btn btn-outline-primary">Ajouter la vente</button>
+				</div>
+			</fieldset>
+			</form>
+			<?php
+			echo "<br/>";
+			}// fin FormulaireAjoutVente
 
 function FormulaireChoixProduit2($choix){
 	// Auteur : Nathan Aubinais
 
 	$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
-	// filtrer les paramètres 
+	// ajoute des quote à la variable choix qui est de type str
 	$mail = $madb->quote($choix);
+	// Récupération de toutes les infos de la table Produits
 	$requete = "SELECT * FROM Produits;";
 	$resultat = $madb->query($requete);
 	if ($resultat) {
 		$Produits = $resultat->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	?>
-	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-		<fieldset> 
-			<select id="id_NomP" name="NomP" size="1">
+	?>		
+		<!-- Captcha de sécurité -->
+		<div class="col-md-6">
+			<label for="captcha4" class="form-label">Captcha</label>
+			<div class="input-group ">
+
+				<!-- Image du captcha -->
+				<div class="input-group-text">
+					<img src="images/image_captcha.php" onclick="this.src='images/image_captcha.php?' + Math.random();" alt="captcha" style="cursor:pointer;">
+				</div>
+				<!-- Emplacement de réponse -->
+				<input type="text" name="captcha4" class="form-control" placeholder="Captcha" id="captcha4" autocomplete="off">
+			
+			</div>
+		</div>
+		<!-- Formulaire de selcetion de suppression d'un produit -->
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<fieldset> 
+				<select id="id_NomP" name="NomP" size="1" class="form-select" aria-label="Default select example">
 				<?php
-				foreach ($Produits as $produit) {
-					echo '<option value="'.$produit["NomP"]. '">' .$produit["NomP"]. '</option>';
+					// Récupère le nom de tous les produits pour les proposer dans une sorte de menu déroulant
+					foreach ($Produits as $produit) {
+						echo '<option value="'.$produit["NomP"]. '">' .$produit["NomP"]. '</option>';
+					}
+					
+				echo '</select>';
+					
+					if ($choix == 'supprimer') {
+						echo '<button type="submit" class="btn btn-outline-danger">Supprimer</button>';
+					}						
+				?>
+			</fieldset>
+		</form>
+	<?php
+		echo "<br/>";
+	}
+
+function FormulaireChoixAcheteur($choix){
+	// Auteur : Nathan Aubinais
+	$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+	$mail = $madb->quote($choix);
+	// Récupère toutes les infos sur la table Acheteurs
+	$requete = "SELECT * FROM Acheteurs;";
+	$resultat = $madb->query($requete);
+	if ($resultat) {
+		$Acheteurs = $resultat->fetchAll(PDO::FETCH_ASSOC);
+	}
+	
+	?>
+
+	<!-- Captcha de sécurité -->
+	<div class="col-md-6">
+		<label for="captcha5" class="form-label">Captcha</label>
+		<div class="input-group ">
+
+			<!-- Image du captcha -->
+			<div class="input-group-text">
+				<img src="images/image_captcha.php" onclick="this.src='images/image_captcha.php?' + Math.random();" alt="captcha" style="cursor:pointer;">
+			</div>
+			<!-- Emplacement de réponse -->
+			<input type="text" name="captcha5" class="form-control" placeholder="Captcha" id="captcha5" autocomplete="off">
+			
+		</div>
+	</div>
+
+	<!-- Formulaire de suppression d'un acheteur avec possibilité de selection via un menu déroulant -->
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+		<fieldset>
+			<select id="id_NomA" name="NomA" size="1" class="form-select" aria-label="Default select example">
+				<?php
+				// Récupère le nom des acheteurs pour les proposer dans un menu déroulant
+				foreach ($Acheteurs as $acheteur) {
+					echo '<option value="'.$acheteur["NomP"]. '">' .$acheteur["NomP"]. '</option>';
 				}
+				
+			echo '</select>';
 
 				if ($choix == 'supprimer') {
-					echo '<input type="submit" name = "Supprimer" value="Supprimer"/>';
+					echo '<button type="submit" class="btn btn-outline-danger">Supprimer</button>';
 				}
+	
 
-				if ($choix == 'modifier') {
-					echo '<input type="submit" name = "Modifier" value="Modifier"/>';
-
-				}
-					
+						
 			?>
 		</fieldset>
 	</form>
 	<?php
 		echo "<br/>";
-	}// fin affiche$_SESSION["admin"]==true
+	}
+
+	function FormulaireSelection(){
+		// Auteur : Nathan Aubinais
+		$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+		// Récupère toutes les infos sur la table Acheteurs
+		$requete = "SELECT * FROM Produits;";
+		$resultat = $madb->query($requete);
+		if ($resultat) {
+			$Produits = $resultat->fetchAll(PDO::FETCH_ASSOC);
+		}
+		
+		?>
+	
+		<!-- Formulaire de suppression d'un acheteur avec possibilité de selection via un menu déroulant -->
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<fieldset>
+				<select id="id_NomPr" name="NomPr" size="1" class="form-select" aria-label="Default select example">
+					<?php
+					// Récupère le nom des acheteurs pour les proposer dans un menu déroulant
+					foreach ($Produits as $produit) {
+						echo '<option value="'.$produit["NomP"]. '">' .$produit["NomP"]. '</option>';
+					}
+					
+				echo '</select>';
+	
+
+				echo '<button type="submit" class="btn btn-outline-primary">Selectionner</button>';
+					
+				?>
+			</fieldset>
+		</form>
+		<?php
+			echo "<br/>";
+		}
 
 
 function formulaireChoixClient($type_modif) {
@@ -239,6 +415,7 @@ function formulaireChoixProduit($type_modif) {
 	$rq = "SELECT * FROM Produits";
 	$resultat = $madb->query($rq);
 	$tab = $resultat->fetchAll(PDO::FETCH_ASSOC);
+	$etat_produits = array();
 
 	// Convertir le tableau des produits en chaine JSON traitable par javascript
 	$jsontab = json_encode($tab);
@@ -253,8 +430,25 @@ function formulaireChoixProduit($type_modif) {
 			echo "<h5>1. Choisissez le produit à ".$type_modif.".</h5>"
 		?>
 
-		<!-- ID du produit recherché -->
+		<!-- Etat du produit recherché -->
 		<div class="col-md-2">
+			<label for="etat_produit" class="form-label">Etat du produit</label>
+			<!-- A chaque état de produit sélectionné, chercherProduitParSonEtat() est appellé et complète le formulaire -->
+			<select name="etat_produit" class="form-select" id="etat_produit" 
+				onchange='chercherProduitParSonEtat(<?php echo $jsontab ?>)'>
+				<?php
+					foreach ($tab as $produit) {
+						if (!in_array($produit["Etat"], $etat_produits)) {
+							$etat_produits[] = $produit["Etat"];
+							echo '<option value="'.$produit["Etat"]. '">' .$produit["Etat"]. '</option>';
+						}
+					}
+				?>
+			</select>
+		</div>
+
+		<!-- ID du produit recherché -->
+		<div class="col-md-1">
 			<!-- A chaque lettre tapée, chercherProduitParSonID() est appellé et complète le formulaire -->
 			<label for="id_produit" class="form-label">ID Produit</label>
 			<input type="text" name="id_produit" class="form-control" autocomplete="off" placeholder="ID produit" 
@@ -262,7 +456,7 @@ function formulaireChoixProduit($type_modif) {
 		</div>
 
 		<!-- Nom du produit recherché -->
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<label for="nom_produit" class="form-label">Nom du produit</label>
 			<!-- A chaque nom de produit sélectionné, chercherProduitParSonNom() est appellé et complète le formulaire -->
 			<select name="nom_produit" class="form-select" id="nom_produit" 
@@ -337,7 +531,7 @@ function formulaireChoixProduit($type_modif) {
 						formulaireModificationProduit();
 					}
 					elseif ($type_modif == "supprimer") {
-						// TODO : Nathan, tu peux utiliser ça je pense
+						// Nathan, tu peux utiliser ça je pense
 						supprimerProduit();
 					}
 					else {

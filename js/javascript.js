@@ -97,6 +97,45 @@ function chercherClientParSonID(jsontab) {
     }
 }
 
+// CHANGER LES PRODUITS DISPONIBLES DANS LE DROPDOWN DE SELECTION DU NOM DU PRODUIT DU FORMULAIRE DE SELECTION PRODUIT
+function chercherProduitParSonEtat(jsontab) {
+    // Récupère la liste des produits compatible avec l'état sélectionné.
+    // Affiche ces informations dans un dopdown du formulaire de sélection.
+    // Auteur : Yann Plougonven--Lastennet
+
+    // Récupération des variables auprès du formulaire.
+    var etat = document.getElementById('etat_produit').value;
+    var nom_produit = document.getElementById('nom_produit');
+
+    // Convertir jsontab en chaine de caractères puis en tableau JS
+    var jsontab = JSON.stringify(jsontab);
+    var tableau = JSON.parse(jsontab);
+
+    // Afficher dans la console le tableau converti
+    console.log("Tableau JS contenant la liste des produits :");
+    console.log(tableau);
+
+    // Parcourir le tableau pour trouver les produits correspondant à l'état.
+    console.log("Etat du produit à chercher : " + etat);
+    var res = [];
+    for (i = 0; i < tableau.length; i++) {
+        if (etat == tableau[i]["Etat"]) {
+            res.push(tableau[i]["NomP"]);
+        }
+    }
+
+    // Clear le dopdown nom_produit
+    nom_produit.innerHTML = "";
+
+    // Mettre à jour le dopdown nom_produit
+    for (i = 0; i < res.length; i++) {
+        var option = document.createElement("option");
+        option.value = res[i];
+        option.text = res[i];
+        nom_produit.appendChild(option);
+    }
+}
+
 // AFFICHER LES CARACTERISTIQUES D'UN PRODUIT DANS LE FORM DE SELECTION A PARTIR DE SON ID
 function chercherProduitParSonID(jsontab) {
     // Récupère le nom, le prix et le lien de l'image d'un produit à partir de son ID.
@@ -218,14 +257,11 @@ function chercherVenteParSonID(jsontab) {
 
     // Afficher le prénom et la ville du client correspondant à l'ID.
     if (res != -1) {
-        id_produit.value = tableau[res]["idP"];
-        prix_produit.value = tableau[res]["Prix"];
-        img_produit.value = tableau[res]["Illustration"];
         id_produit_vente.value = tableau[res]["idP"];
         id_client_vente.value = tableau[res]["idC"];
         quantite_vente.value = tableau[res]["Qte"];
-        nom_produit_vente.value = tableau[res]["nomProduit"]; // TODO : changer pour le nom du produit
-        nom_client_vente.value = tableau[res]["nomAcheteur"]; // TODO : changer pour le nom du client
+        nom_produit_vente.value = tableau[res]["nomProduit"];
+        nom_client_vente.value = tableau[res]["nomAcheteur"];
 
     // Afficher un message d'erreur si l'ID ne correspond à aucun client.
     } else {

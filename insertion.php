@@ -6,6 +6,7 @@
 session_start();
 include_once("fonctions.php");
 include_once("formulaires.php");
+verif_autorisation_d_acces(array("admin", "vendeur")); // autoriser ou refuser l'accès à la page
 ?>
 
 <!DOCTYPE html>
@@ -24,19 +25,13 @@ include_once("formulaires.php");
 </head>
 
 <body>
-    
-    <!-- Autoriser ou non l'accès à la page -->
-    <?php
-        verif_autorisation_d_acces(array("admin", "vendeur"))
-	?>
 
     <!-- en-tête de la page -->
     <?php
         afficher_header()
     ?>
-
     
-    <div class="container-fluid">
+    <div class="container-fluid bg-color">
         <div class="row">
 
             <!-- menu de navigation -->
@@ -48,26 +43,50 @@ include_once("formulaires.php");
             
             </div>
 
-            <!-- partie principale de la page -->
-            <main class="col-12 col-xl-9">
-
-                <h1>Insérer des données</h1>
-                <?php
-                    FormulaireAjoutProduit();
-                    if (!empty($_POST) && isset($_POST["NomP"]) && isset($_POST["Prix"])) {
-                        $res = ajouterProduit($_POST["NomP"], $_POST["Prix"]);
-                        if ($res == 1) {
-                            echo "Le produit a bien été inséré";
-                        } 
-                        else{
-                            echo "Erreur, le produit n'a pas été insinré";
+           <!-- partie principale de la page -->
+           <main class="col-12 col-xl-9">
+                <h1> Insérer des Données </h1>
+                <!-- partie d'insertion d'un produit -->
+                <div class="col-12 col-xl-6">
+                    <h2> Insérer un produit</h2>
+                    <?php
+                        // appel le formulaire d'ajout produit
+                        FormulaireAjoutProduit();
+                        // Vérifie que le nom et le prix du produit ont bien été renseigné dans le formulaire
+                        if (!empty($_POST) && isset($_POST["NomP"]) && isset($_POST["Prix"])) {
+                            // Si la condition est vrai appel la fonction d'insertion de produitS
+                            $res = ajouterProduit($_POST["NomP"], $_POST["Prix"]);
                         }
-                        listerProduits();
-                    }
-                ?>
 
+                    ?>
+                </div>
+                <!-- partie d'insertion d'un Acheteur -->
+                <div class="col-12 col-xl-6">
+                    <h2> Insérer un client</h2>
+                    <?php
+                        // appel le formulaire d'ajout d'un acheteur
+                        FormulaireAjoutAcheteur();
+                        // Vérifie que le nom et la ville de l'acheteur ont bien été renseigné dans le formulaire
+                        if (!empty($_POST) && isset($_POST["NomA"]) && isset($_POST["Ville"])) {
+                            // Si la condition est vrai appel la fonction d'insertion d'acheteur
+                            $res = ajouterAcheteur($_POST["NomA"], $_POST["Ville"]);
+                        }
+                    ?>
+                </div>
+                <!-- partie d'insertion d'une vente -->
+                <div class="col-12 col-xl-6">
+                    <h2> Insérer une vente</h2>
+                    <?php
+                        // appel le formulaire d'ajout d'une vente
+                        FormulaireAjoutVente();
+                        // Vérifie le nom du produit, le nom de l'acheteur et la quantité d'achat ont bien été renseigné dans le formulaire
+                        if (!empty($_POST) && isset($_POST["NameA"]) && isset($_POST["NameP"]) && isset($_POST["Qte"])) {
+                            // Si la condition est vrai appel la fonction d'insertion d'une vente
+                            $res = ajouterVente($_POST["NameA"], $_POST["NameP"], $_POST["Qte"]);
+                        }
+                    ?>
+                </div>
             </main>
-
         </div>
     </div>
 

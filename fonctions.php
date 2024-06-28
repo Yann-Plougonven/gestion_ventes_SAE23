@@ -319,6 +319,30 @@ function listerProduits()	{
 	return $retour;
 }
 
+function listerAcheteurs(){
+	// Auteur : Nathan Aubinais
+	// Liste les Noms et ville des acheteurs 
+	// Affiche les informations en faissant appelle à la fonction affiche tableau
+
+	$retour = false ;	
+	try {
+		$madb = new PDO('sqlite:bdd/ventesClient.sqlite');
+		$rq = "SELECT NomP, Ville FROM Acheteurs"; 
+		$res = $madb->query($rq);
+		$tab = $res->fetchAll(PDO::FETCH_ASSOC);
+		if ($tab !=  null){
+			afficheTableau($tab);
+			$retour = true;
+			}
+		}
+	catch(Exception $e){
+		echo"<p>Erreur lors de la connexion à la BDD </p>";
+	}
+
+
+	return $retour;
+}
+
 // AFFICHER LES PRODUITS (ID, NOM, PRIX, IMAGE) DANS DES CARTES BOOTSTRAP
 function listerProduitsAvecImages() {
 	// Se connecte à la BDD, liste les produits avec leur image, 
@@ -327,7 +351,7 @@ function listerProduitsAvecImages() {
 
 	try { // Tentative de connexion à la BDD et de récupération des données ventes
 		$madb = new PDO('sqlite:bdd/ventesClient.sqlite');
-		$rq = "SELECT idP, NomP, Prix, Illustration FROM Produits";
+		$rq = "SELECT idP, NomP, Prix, Illustration, Etat FROM Produits";
 		$resultat = $madb->query($rq);
 		$tab = $resultat->fetchAll(PDO::FETCH_ASSOC);
 
@@ -353,7 +377,7 @@ function afficherProduitsEnCartes($tab) {
 				echo '<img src='.$ligne["Illustration"].' class="card-img-top" alt="Illustration du produit">';
 				echo '<div class="card-body d-flex flex-column">';
 					echo '<h5 class="card-title mt-auto">'.$ligne["NomP"].'</h5>';
-					echo '<p class="card-text"><strong>'.$ligne["Prix"].'€</strong> <br> reférence n°'.$ligne["idP"].'</p>';
+					echo '<p class="card-text"><strong>'.$ligne["Prix"].'€</strong> <br>'.$ligne["Etat"].'<br> reférence n°'.$ligne["idP"].'</p>';
 				echo '</div>';
 			echo '</div>';
 		echo '</article>';
@@ -365,25 +389,120 @@ function ajouterProduit($NomP,$Prix){
 	// On récupère directement le code de la ville qui a été transmis dans l'attribut value de la balise <option> du formulaire
 	// Il n'est donc pas nécessaire de rechercher le code INSEE de la ville
 	// Auteur : Nathan Aubinais
-
 	$retour=0;
-	$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
-	// filtrer les paramètres 
-	$NomP = $madb->quote($NomP);
-	// INSERT INTO utilisateurs VALUES('', '', '', '', '');
-	$requete = "INSERT INTO Produits (NomP, Prix) VALUES($NomP,$Prix)";
+	try {
+		// connexion à la BDD
+		$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+		// Ajout de quote àa la variable NomP qui est un str mais pas au prix qui est un Float 
+		$NomP = $madb->quote($NomP);
+		// INSERT INTO utilisateurs VALUES('', '', '', '', '');
+		$requete = "INSERT INTO Produits (NomP, Prix) VALUES($NomP,$Prix)";
+		// On utilise pas query, on utilise exec lorsque l'on fait un requête qui a vocation à modifier la base
+		$resultat = $madb->exec($requete);
 
-	// On utilise pas query, on utilise exec lorsque l'on fait un requête qui a vocation à modifier la base
-	$resultat = $madb->exec($requete);
+		echo "<div class='col-12 col-lg-7'>";
 
-	
-	if ($resultat == true) {
-	$retour = 1;
+			// Afficher un message de succès
+			echo "<div class='alert alert-success mt-3' role='alert'>";
+				echo "<i class='bi bi-check-circle-fill'></i>";
+				echo " Le produit ".$NomP." a bien été ajouté avec un prix de ".$Prix."€.";
+			echo '</div>';
+
+			// Afficher la liste des Produits
+			listerProduits();
+
+		echo "</div>";
+
+		if ($resultat == true) {
+			$retour = 1;
+			}
 	}
-	
+	catch (Exception $e) { // Erreur
+		echo "<p>Erreur lors de la connexion à la BDD : ".$e->getMessage()."</p>";
+	}
 	
 	return $retour;
 }
+
+	// AJOUTE UN ACHETEUR DANS LA TABLE AVEC SON NOM ET SA VILLE 
+	function ajouterAcheteur($NomP,$Ville){
+		// Auteur Nathan Aubinais
+		$retour=0;
+		try{
+			$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+			// Ajout de quote aux 2 variables qui sont toutes deux des chaine de caractères 
+			$NomP = $madb->quote($NomP);
+			$Ville = $madb->quote($Ville);
+			// INSERT INTO utilisateurs VALUES('', '', '', '', '');
+			$requete = "INSERT INTO Acheteurs (NomP, Ville) VALUES($NomP,$Ville)";
+			// On utilise pas query, on utilise exec lorsque l'on fait un requête qui a vocation à modifier la base
+			$resultat = $madb->exec($requete);
+
+			echo "<div class='col-12 col-lg-7'>";
+
+				// Afficher un message de succès
+				echo "<div class='alert alert-success mt-3' role='alert'>";
+					echo "<i class='bi bi-check-circle-fill'></i>";
+					echo " L'acheteur ".$NomP." qui réside à ".$Ville." a bien été ajouté.";
+				echo '</div>';
+
+				// Afficher la liste des clients
+				listerAcheteurs();
+
+			echo "</div>";
+
+			if ($resultat == true) {
+				$retour = 1;
+			}
+		}
+		catch (Exception $e) { // Erreur
+			echo "<p>Erreur lors de la connexion à la BDD : ".$e->getMessage()."</p>";
+		}
+	   
+		
+		return $retour;
+	}
+
+
+	// AJOUTE UNE VENTE DANS LA TABLE A PARTIR DU NOM DE L'ACHETEUR, LE PRODUIT ACHETE ET LA QUANTITE
+	function ajouterVente($NomA,$NomP,$Qte){
+		// Auteur : Nathan AubinaisS
+		$retour=0;
+		try{
+			$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+			// Ajout de quote aux 2 variables qui sont toutes deux des chaine de caractères mais pas à la variable Qte qui est un entier
+			$NomP = $madb->quote($NomP);
+			$NomA = $madb->quote($NomA);
+			// INSERT INTO utilisateurs VALUES('', '', '', '', '');
+			$requete = "INSERT INTO Achat (idP, idC, Qte) 
+			VALUES((SELECT Produits.idP FROM Produits INNER JOIN Achat ON Produits.idP = Achat.idP WHERE Produits.NomP = $NomP),(SELECT Acheteurs.idC FROM Acheteurs INNER JOIN Achat ON Acheteurs.idC = Achat.idC WHERE Acheteurs.NomP = $NomA), $Qte)";
+			// On utilise pas query, on utilise exec lorsque l'on fait un requête qui a vocation à modifier la base
+			$resultat = $madb->exec($requete);
+
+			echo "<div class='col-12 col-lg-7'>";
+
+				// Afficher un message de succès
+				echo "<div class='alert alert-success mt-3' role='alert'>";
+					echo "<i class='bi bi-check-circle-fill'></i>";
+					echo " L'acheteur ".$NomA." a bien acheté ".$Qte." fois le produit ".$NomP." .";
+				echo '</div>';
+
+				// Afficher la liste des ventes
+				listerVentes();
+
+			echo "</div>";
+
+			if ($resultat == true) {
+				$retour = 1;
+			}
+		}
+		catch (Exception $e) { // Erreur
+			echo "<p>Erreur lors de la connexion à la BDD : ".$e->getMessage()."</p>";
+		}
+	   
+		
+		return $retour;
+	}
 
 function supprimerProduit($NomP){
 	// Supprime un produit de la bdd
@@ -391,16 +510,111 @@ function supprimerProduit($NomP){
 
 	$retour=0;
 
-	$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
-	// filtrer les paramètres 
-	$NomP = $madb->quote($NomP);
-	$requete = "DELETE FROM Produits WHERE NomP = $NomP;";
-	// On utilise pas query, on utilise exec lorsque l'on fait un requête qui a vocation à modifier la base
-	$resultat = $madb->exec($requete);
+	try {
+		$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+		$NomP = $madb->quote($NomP);
+		$requete = "DELETE FROM Produits WHERE NomP = $NomP;";
+		// On utilise pas query, on utilise exec lorsque l'on fait un requête qui a vocation à modifier la base
+		$resultat = $madb->exec($requete);
 
-	if ($resultat == true) {
-		$retour = 1;
+		echo "<div class='col-12 col-lg-7' mb-3>";
+
+			// Afficher un message de succès
+			echo "<div class='alert alert-success mt-3' role='alert'>";
+				echo "<i class='bi bi-check-circle-fill'></i>";
+				echo " Le produit ".$NomP." a bien été supprimé.";
+			echo '</div>';
+
+			// Afficher la liste des Produits
+			listerProduits();
+
+		echo "</div>";
+
+		if ($resultat == true) {
+			$retour = 1;
+			}
+	}
+	catch (Exception $e) { // Erreur
+		echo "<p>Erreur lors de la connexion à la BDD : ".$e->getMessage()."</p>";
+	}
+
+	return $retour;
+}
+
+
+function supprimerAcheteurs($NomA){
+	// Auteur Nathan Aubinais
+	$retour=0;
+	try {
+		$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+		// filtrer les paramètres 
+		$NomA = $madb->quote($NomA);
+		$requete = "DELETE FROM Acheteurs WHERE NomP = $NomA;";
+		// On utilise pas query, on utilise exec lorsque l'on fait une requête qui a vocation à modifier la base
+		$resultat = $madb->exec($requete);
+
+		echo "<div class='col-12 col-lg-7' mb-3>";
+
+			// Afficher un message de succès
+			echo "<div class='alert alert-success mt-3' role='alert'>";
+				echo "<i class='bi bi-check-circle-fill'></i>";
+				echo " L'acheteur ".$NomA." a bien été supprimé.";
+			echo '</div>';
+
+			// Afficher la liste des clients
+			listerAcheteurs();
+
+		echo "</div>";
+
+		if ($resultat == true) {
+			$retour = 1;
 		}
+	}
+	catch (Exception $e) { // Erreur
+		echo "<p>Erreur lors de la connexion à la BDD : ".$e->getMessage()."</p>";
+	}
+
+	return $retour;
+}
+
+function selectionnerProduits($NomPr){
+	// Auteur Nathan Aubinais
+	$retour=0;
+	try {
+		$madb = new PDO('sqlite:bdd/ventesClient.sqlite'); 
+		// filtrer les paramètres 
+		$NomPr = $madb->quote($NomPr);
+		$requete = "SELECT Acheteurs.NomP as Clients, Produits.NomP as Produits, Achat.Qte as Quantité
+		FROM Achat 
+		INNER JOIN Produits ON  Produits.IdP = Achat.IdP
+		INNER JOIN Acheteurs ON  Acheteurs.IdC = Achat.IdC
+		WHERE Produits.NomP = $NomPr;";
+		// On utilise pas query, on utilise exec lorsque l'on fait une requête qui a vocation à modifier la base
+		$resultat = $madb->query($requete);
+		$tab = $resultat->fetchAll(PDO::FETCH_ASSOC);
+
+		echo "<div class='col-12 col-lg-7' mb-3>";
+
+			// Afficher un message de succès
+			echo "<div class='alert alert-success mt-3' role='alert'>";
+				echo "<i class='bi bi-check-circle-fill'></i>";
+				echo " Voici la liste des ventes concernant le produit ".$NomPr.".";
+			echo '</div>';
+
+			// Afficher la liste des ventes
+			if ($tab != null) {
+				afficheTableau($tab);
+			}
+
+		echo "</div>";
+
+		if ($resultat == true) {
+			$retour = 1;
+		}
+	}
+	catch (Exception $e) { // Erreur
+		echo "<p>Erreur lors de la connexion à la BDD : ".$e->getMessage()."</p>";
+	}
 
 	return $retour;
 }

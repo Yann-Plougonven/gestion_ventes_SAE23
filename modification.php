@@ -6,6 +6,7 @@
 session_start();
 include_once("fonctions.php");
 include_once("formulaires.php");
+verif_autorisation_d_acces(array("admin", "vendeur")); // autoriser ou refuser l'accès à la page
 ?>
 
 <!DOCTYPE html>
@@ -26,19 +27,13 @@ include_once("formulaires.php");
 </head>
 
 <body>
-    
-    <!-- Autoriser ou non l'accès à la page -->
-    <?php
-        verif_autorisation_d_acces(array("admin", "vendeur"))
-	?>
 
     <!-- en-tête de la page -->
     <?php
         afficher_header()
     ?>
-
     
-    <div class="container-fluid min-vh-100">
+    <div class="container-fluid min-vh-100 bg-color">
         <div class="row">
 
             <!-- menu de navigation -->
@@ -86,7 +81,6 @@ include_once("formulaires.php");
                         formulaireChoixVente("modifier");
                     ?>
 
-                    <p><hr>
                 </div>
                 
             </main>
