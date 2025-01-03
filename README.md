@@ -5,9 +5,11 @@ Il permet de gérer, à l'aide d'une interface intuitive, la base de données de
 
 ## Consulter le projet
 ### Accéder au site web
-Au moment où vous lisez ces lignes, le [site web](https://sae23web.azurewebsites.net), habituellement hébergé sur Azure, n'est peut-être pas en ligne.
+**Information importante :** La base de données du site publié en ligne étant modifiable par tous, elle est susceptible de contenir des éléments inappropriés. Privilégiez la consultation des données hebergées sur GitHub.
 
 ➡️ Vous pouvez télécharger ce repository sur votre ordinateur, et le consulter en l'hébergeant en local à l'aide du logiciel XAMPP.
+
+Le site web est également consultable en ligne à l'adresse suivante : https://sae23web.azurewebsites.net
 
 ### Identifiants de connexion au site web
 Les identifiants d'utilisateurs fictifs sont inclus dans la base de données.
